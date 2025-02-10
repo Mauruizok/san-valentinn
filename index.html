@@ -83,69 +83,36 @@
             100% { opacity: 1; }
         }
 
-        /* Estilo de la carta */
+        /* Estilo de la carta con animación */
         .carta {
             display: none;
             background-color: #fff;
             color: #6d6875;
             padding: 20px;
             margin-top: 20px;
-            border-radius: 15px;
+            border-radius: 10px;
             width: 80%;
             max-width: 600px;
             margin: 0 auto;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             font-size: 1.2em;
             line-height: 1.6;
             text-align: left;
-            border: 2px solid #ff6b6b;
-            position: relative;
+            opacity: 0;
+            transform: translateY(20px); /* Inicialmente desplazada hacia abajo */
+            animation: slideIn 2s forwards; /* Desliza desde abajo */
         }
 
-        .carta::before {
-            content: "💌";
-            font-size: 3em;
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .carta p {
-            margin: 0;
-            text-indent: 1em;
-        }
-
-        /* Agregar rosas en las esquinas */
-        .carta .rosa {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background-size: cover;
-        }
-
-        .carta .rosa.izquierda-arriba {
-            top: -15px;
-            left: -15px;
-            background-image: url('https://imgur.com/a/PsFGSIt.png'); /* Cambia este link por el de la rosa que prefieras */
-        }
-
-        .carta .rosa.derecha-arriba {
-            top: -15px;
-            right: -15px;
-            background-image: url('https://imgur.com/a/PsFGSIt.png'); /* Cambia este link por el de la rosa que prefieras */
-        }
-
-        .carta .rosa.izquierda-abajo {
-            bottom: -15px;
-            left: -15px;
-            background-image: url('https://imgur.com/a/PsFGSIt.png'); /* Cambia este link por el de la rosa que prefieras */
-        }
-
-        .carta .rosa.derecha-abajo {
-            bottom: -15px;
-            right: -15px;
-            background-image: url('https://imgur.com/a/PsFGSIt.png'); /* Cambia este link por el de la rosa que prefieras */
+        /* Animación de deslizamiento hacia abajo desde los botones */
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Ajustes responsivos */
@@ -165,25 +132,37 @@
 </head>
 <body>
     <h1>¿Querés ser mi San Valentín y ver pelis todo el día? Prometo no demorar buscándolas ❤️</h1>
+    
+    <!-- Primer imagen -->
     <div class="image-container">
         <img src="https://imgur.com/nloYFV4.png" alt="Pareja feliz">
     </div>
+    
+    <!-- Frase -->
     <p>De verdad no sabía qué era y a veces por vago no me pongo a informarme. Perdón por ser así, voy a tratar de ser más atento a estas cosas que te gustan. Sos la persona más especial para mí y me encantaría celebrar este día con vos.</p>
+
+    <!-- Botones -->
     <button class="btn" onclick="mostrarRespuesta('¡Sabía que dirías que sí! 😍')">Sí</button>
     <button class="btn" onclick="mostrarRespuesta('¡No había otra opción! ❤️')">Obvio que sí</button>
 
-    <div class="respuesta" id="respuesta"></div>
-
-    <div class="hearts" id="hearts"></div>
-
-    <!-- Carta de mensaje largo -->
+    <!-- Carta de mensaje largo (antes de las imágenes) -->
     <div class="carta" id="carta">
-        <div class="rosa izquierda-arriba"></div>
-        <div class="rosa derecha-arriba"></div>
-        <div class="rosa izquierda-abajo"></div>
-        <div class="rosa derecha-abajo"></div>
         <p>Hoy quiero que pasemos un día especial, y quería aprovechar para recordarte lo mucho que te amo y lo afortunado que soy de tenerte a mi lado. Todo el tiempo que paso con vos es hermoso y de verdad me hace muy feliz. Yo sé que últimamente no estamos teniendo momentos juntos porque, bueno, son cosas que no se dan mucho ya que tenemos responsabilidades, pero para mí cada día es especial con vos porque te tengo y espero estar así toda la vida. Te agradezco por tu paciencia y apoyo, porque sé que no soy el mejor novio y que te mereces más, pero te prometo que lo voy a mejorar cada día. Gracias por ser mi compañera de vida y que este día sea solo una muestra de todo lo que me haces sentir cada día. Te amo con mi alma.</p>
     </div>
+
+    <!-- Respuesta (mensaje corto) -->
+    <div class="respuesta" id="respuesta"></div>
+
+    <!-- Segundas imágenes -->
+    <div class="image-container">
+        <img src="https://imgur.com/9NXjDwN.png" alt="Ramo de flores">
+    </div>
+    <div class="image-container">
+        <img src="https://imgur.com/kHwTU6k.png" alt="Otra imagen especial">
+    </div>
+
+    <!-- Contenedor para los corazones flotantes -->
+    <div class="hearts" id="hearts"></div>
 
     <script>
         function mostrarRespuesta(mensaje) {
@@ -196,15 +175,14 @@
             respuesta.style.display = 'block';
             respuesta.innerHTML = mensaje;
             
-            // Esperar 3 segundos y mostrar la carta
+            // Esperar 3 segundos y mostrar la carta con animación
             setTimeout(function() {
                 const carta = document.getElementById('carta');
                 carta.style.display = 'block';
-                carta.classList.add('animacion-carta'); // Activar animación de la carta
             }, 3000);
         }
 
-        // Generar más corazones flotantes
+        // Generar corazones flotantes con mayor intervalo de tiempo
         setInterval(() => {
             const heart = document.createElement('div');
             heart.classList.add('heart');
@@ -214,8 +192,7 @@
             document.getElementById('hearts').appendChild(heart);
 
             setTimeout(() => heart.remove(), 5000);
-        }, 500); // Aumenté la cantidad de corazones
-
+        }, 1000);
     </script>
 </body>
 </html>
