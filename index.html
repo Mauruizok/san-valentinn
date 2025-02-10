@@ -83,7 +83,7 @@
             100% { opacity: 1; }
         }
 
-        /* Estilo de la carta */
+        /* Estilo de la carta con animación */
         .carta {
             display: none;
             background-color: #fff;
@@ -98,7 +98,21 @@
             font-size: 1.2em;
             line-height: 1.6;
             text-align: left;
-            animation: fadeIn 1s ease-in-out;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: slideIn 1s forwards;
+        }
+
+        /* Animación de deslizamiento hacia abajo */
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Ajustes responsivos */
@@ -153,7 +167,7 @@
             respuesta.style.display = 'block';
             respuesta.innerHTML = mensaje;
             
-            // Esperar 3 segundos y mostrar la carta
+            // Esperar 3 segundos y mostrar la carta con animación
             setTimeout(function() {
                 const carta = document.getElementById('carta');
                 carta.style.display = 'block';
@@ -175,5 +189,3 @@
 </body>
 </html>
 
-</body>
-</html>
