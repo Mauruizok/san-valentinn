@@ -132,29 +132,37 @@
 </head>
 <body>
     <h1>¿Querés ser mi San Valentín y ver pelis todo el día? Prometo no demorar buscándolas ❤️</h1>
+    
+    <!-- Primer imagen -->
     <div class="image-container">
         <img src="https://imgur.com/nloYFV4.png" alt="Pareja feliz">
     </div>
+    
+    <!-- Frase -->
     <p>De verdad no sabía qué era y a veces por vago no me pongo a informarme. Perdón por ser así, voy a tratar de ser más atento a estas cosas que te gustan. Sos la persona más especial para mí y me encantaría celebrar este día con vos.</p>
+
+    <!-- Botones -->
     <button class="btn" onclick="mostrarRespuesta('¡Sabía que dirías que sí! 😍')">Sí</button>
     <button class="btn" onclick="mostrarRespuesta('¡No había otra opción! ❤️')">Obvio que sí</button>
 
+    <!-- Carta de mensaje largo (antes de las imágenes) -->
+    <div class="carta" id="carta">
+        <p>Hoy quiero que pasemos un día especial, y quería aprovechar para recordarte lo mucho que te amo y lo afortunado que soy de tenerte a mi lado. Todo el tiempo que paso con vos es hermoso y de verdad me hace muy feliz. Yo sé que últimamente no estamos teniendo momentos juntos porque, bueno, son cosas que no se dan mucho ya que tenemos responsabilidades, pero para mí cada día es especial con vos porque te tengo y espero estar así toda la vida. Te agradezco por tu paciencia y apoyo, porque sé que no soy el mejor novio y que te mereces más, pero te prometo que lo voy a mejorar cada día. Gracias por ser mi compañera de vida y que este día sea solo una muestra de todo lo que me haces sentir cada día. Te amo con mi alma.</p>
+    </div>
+
+    <!-- Respuesta (mensaje corto) -->
     <div class="respuesta" id="respuesta"></div>
 
+    <!-- Segundas imágenes -->
     <div class="image-container">
         <img src="https://imgur.com/9NXjDwN.png" alt="Ramo de flores">
     </div>
-
     <div class="image-container">
         <img src="https://imgur.com/kHwTU6k.png" alt="Otra imagen especial">
     </div>
 
+    <!-- Contenedor para los corazones flotantes -->
     <div class="hearts" id="hearts"></div>
-
-    <!-- Carta de mensaje largo debajo de los botones -->
-    <div class="carta" id="carta">
-        <p>Hoy quiero que pasemos un día especial, y quería aprovechar para recordarte lo mucho que te amo y lo afortunado que soy de tenerte a mi lado. Todo el tiempo que paso con vos es hermoso y de verdad me hace muy feliz. Yo sé que últimamente no estamos teniendo momentos juntos porque, bueno, son cosas que no se dan mucho ya que tenemos responsabilidades, pero para mí cada día es especial con vos porque te tengo y espero estar así toda la vida. Te agradezco por tu paciencia y apoyo, porque sé que no soy el mejor novio y que te mereces más, pero te prometo que lo voy a mejorar cada día. Gracias por ser mi compañera de vida y que este día sea solo una muestra de todo lo que me haces sentir cada día. Te amo con mi alma.</p>
-    </div>
 
     <script>
         function mostrarRespuesta(mensaje) {
