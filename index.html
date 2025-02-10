@@ -5,45 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿Querés ser mi San Valentín?</title>
     <style>
+        /* Fondo dinámico */
         body {
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            padding: 50px;
             margin: 0;
-            min-height: 100vh;
-            overflow-y: auto;
-            position: relative;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+            height: 100vh;
+            overflow: hidden;
+            color: white;
+            text-align: center;
         }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         h1 {
+            font-size: 3em;
             color: #e63946;
-            font-size: 2.8em;
-            margin-bottom: 20px;
-            animation: fadeIn 2s ease-in-out;
+            margin-top: 50px;
+            animation: fadeIn 1s ease-out;
         }
+
         p {
+            font-size: 1.4em;
             color: #6d6875;
-            font-size: 1.3em;
-            margin: 20px 0;
-            animation: fadeIn 2.5s ease-in-out;
+            max-width: 700px;
+            margin: 20px auto;
+            animation: fadeIn 1.5s ease-out;
         }
+
         .btn {
             background-color: #ff6b6b;
             color: white;
-            padding: 15px 30px;
-            margin: 10px;
+            padding: 18px 36px;
+            margin: 15px;
             border: none;
-            border-radius: 25px;
+            border-radius: 30px;
+            font-size: 1.4em;
             cursor: pointer;
-            font-size: 1.5em;
-            transition: transform 0.2s, background-color 0.3s;
+            transition: transform 0.3s, background-color 0.4s, box-shadow 0.4s;
         }
+
         .btn:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
             background-color: #e63946;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
+
+        .respuesta {
+            display: none;
+            font-size: 1.6em;
+            color: #ff6b6b;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Corazones flotantes */
         .hearts {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -51,51 +76,58 @@
             pointer-events: none;
             overflow: hidden;
         }
+
         .heart {
             position: absolute;
+            font-size: 30px;
             color: #ff6b6b;
-            font-size: 24px;
-            animation: float 5s infinite ease-in-out;
+            animation: float 7s infinite ease-in-out;
         }
+
         @keyframes float {
             0% { transform: translateY(0) rotate(0); opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
         }
-        .respuesta {
-            display: none;
-            font-size: 1.5em;
-            color: #ff6b6b;
-            margin-top: 20px;
-            animation: fadeIn 1s ease-in-out;
-        }
+
+        /* Animaciones de entrada */
         @keyframes fadeIn {
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
-        /* Añadiendo animaciones al fondo */
-        @keyframes backgroundMovement {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; }
+
+        .image-container {
+            margin: 30px 0;
         }
-        .background {
-            animation: backgroundMovement 30s ease infinite;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+
+        .image-container img {
+            width: 80%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 2s ease-out;
         }
+
+        audio {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 5px 15px;
+        }
+
     </style>
 </head>
 <body>
-    <div class="background"></div>
     <h1>¿Querés ser mi San Valentín y ver pelis todo el día? Prometo no demorar buscándolas ❤️</h1>
+
     <div class="image-container">
-        <img src="https://imgur.com/nloYFV4.png" alt="Pareja feliz" style="max-width: 100%; height: auto;">
+        <img src="https://imgur.com/nloYFV4.png" alt="Pareja feliz">
     </div>
+
     <p>De verdad no sabía qué era y a veces por vago no me pongo a informarme. Perdón por ser así, voy a tratar de ser más atento a estas cosas que te gustan. Sos la persona más especial para mí y me encantaría celebrar este día con vos.</p>
+
     <button class="btn" onclick="mostrarRespuesta('¡Sabía que dirías que sí! 😍')">Sí</button>
     <button class="btn" onclick="mostrarRespuesta('¡No había otra opción! ❤️')">Obvio que sí</button>
 
@@ -131,11 +163,11 @@
             const heart = document.createElement('div');
             heart.classList.add('heart');
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            heart.style.animationDuration = Math.random() * 4 + 4 + 's';
             heart.innerHTML = '❤️';
             document.getElementById('hearts').appendChild(heart);
 
-            setTimeout(() => heart.remove(), 5000);
+            setTimeout(() => heart.remove(), 8000);
         }, 1000);
     </script>
 </body>
