@@ -83,27 +83,22 @@
             100% { opacity: 1; }
         }
 
-        /* Estilo del mensaje largo (carta) que aparece arriba */
+        /* Estilo de la carta */
         .carta {
-            display: none; /* Ocultamos el mensaje inicialmente */
-            font-size: 1.5em;
+            display: none;
+            background-color: #fff;
             color: #6d6875;
-            text-align: left;
-            margin-top: 30px;
             padding: 20px;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 90%;
+            margin-top: 20px;
+            border-radius: 10px;
+            width: 80%;
             max-width: 600px;
-            margin: 30px auto;
-            animation: slideDown 1s ease-in-out;
-        }
-
-        /* Animación para hacer que el mensaje caiga suavemente */
-        @keyframes slideDown {
-            0% { transform: translateY(-30px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.2em;
+            line-height: 1.6;
+            text-align: left;
+            animation: fadeIn 1s ease-in-out;
         }
 
         /* Ajustes responsivos */
@@ -142,7 +137,7 @@
 
     <div class="hearts" id="hearts"></div>
 
-    <!-- Mensaje largo en la parte superior de la página -->
+    <!-- Carta de mensaje largo -->
     <div class="carta" id="carta">
         <p>Hoy quiero que pasemos un día especial, y quería aprovechar para recordarte lo mucho que te amo y lo afortunado que soy de tenerte a mi lado. Todo el tiempo que paso con vos es hermoso y de verdad me hace muy feliz. Yo sé que últimamente no estamos teniendo momentos juntos porque, bueno, son cosas que no se dan mucho ya que tenemos responsabilidades, pero para mí cada día es especial con vos porque te tengo y espero estar así toda la vida. Te agradezco por tu paciencia y apoyo, porque sé que no soy el mejor novio y que te mereces más, pero te prometo que lo voy a mejorar cada día. Gracias por ser mi compañera de vida y que este día sea solo una muestra de todo lo que me haces sentir cada día. Te amo con mi alma.</p>
     </div>
@@ -158,10 +153,10 @@
             respuesta.style.display = 'block';
             respuesta.innerHTML = mensaje;
             
-            // Esperar 3 segundos y mostrar el mensaje largo arriba
+            // Esperar 3 segundos y mostrar la carta
             setTimeout(function() {
                 const carta = document.getElementById('carta');
-                carta.style.display = 'block'; // Mostrar la carta arriba de todo
+                carta.style.display = 'block';
             }, 3000);
         }
 
@@ -177,5 +172,8 @@
             setTimeout(() => heart.remove(), 5000);
         }, 1000);
     </script>
+</body>
+</html>
+
 </body>
 </html>
