@@ -116,6 +116,38 @@
             text-indent: 1em;
         }
 
+        /* Agregar rosas en las esquinas */
+        .carta .rosa {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-size: cover;
+        }
+
+        .carta .rosa.izquierda-arriba {
+            top: -15px;
+            left: -15px;
+            background-image: url('https://imgur.com/a/PsFGSIt.png'); /* Cambia este link por el de la rosa que prefieras */
+        }
+
+        .carta .rosa.derecha-arriba {
+            top: -15px;
+            right: -15px;
+            background-image: url('https://imgur.com/a/PsFGSIt.png'); /* Cambia este link por el de la rosa que prefieras */
+        }
+
+        .carta .rosa.izquierda-abajo {
+            bottom: -15px;
+            left: -15px;
+            background-image: url('https://imgur.com/a/PsFGSIt.png'); /* Cambia este link por el de la rosa que prefieras */
+        }
+
+        .carta .rosa.derecha-abajo {
+            bottom: -15px;
+            right: -15px;
+            background-image: url('https://imgur.com/a/PsFGSIt.png'); /* Cambia este link por el de la rosa que prefieras */
+        }
+
         /* Ajustes responsivos */
         @media (max-width: 600px) {
             h1 {
@@ -154,6 +186,10 @@
 
     <!-- Carta de mensaje largo -->
     <div class="carta" id="carta">
+        <div class="rosa izquierda-arriba"></div>
+        <div class="rosa derecha-arriba"></div>
+        <div class="rosa izquierda-abajo"></div>
+        <div class="rosa derecha-abajo"></div>
         <p>Hoy quiero que pasemos un día especial, y quería aprovechar para recordarte lo mucho que te amo y lo afortunado que soy de tenerte a mi lado. Todo el tiempo que paso con vos es hermoso y de verdad me hace muy feliz. Yo sé que últimamente no estamos teniendo momentos juntos porque, bueno, son cosas que no se dan mucho ya que tenemos responsabilidades, pero para mí cada día es especial con vos porque te tengo y espero estar así toda la vida. Te agradezco por tu paciencia y apoyo, porque sé que no soy el mejor novio y que te mereces más, pero te prometo que lo voy a mejorar cada día. Gracias por ser mi compañera de vida y que este día sea solo una muestra de todo lo que me haces sentir cada día. Te amo con mi alma.</p>
     </div>
 
