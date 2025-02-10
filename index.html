@@ -83,33 +83,27 @@
             100% { opacity: 1; }
         }
 
-        /* Estilo de la carta emergente */
-        .carta-overlay {
-            display: none; /* Aseguramos que la carta esté oculta inicialmente */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro */
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        /* Estilo del mensaje largo (carta) que aparece arriba */
+        .carta {
+            display: none; /* Ocultamos el mensaje inicialmente */
+            font-size: 1.5em;
+            color: #6d6875;
+            text-align: left;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 600px;
+            margin: 30px auto;
+            animation: slideDown 1s ease-in-out;
         }
 
-        .carta {
-            background-color: #fff;
-            color: #6d6875;
-            padding: 20px;
-            border-radius: 10px;
-            width: 80%;
-            max-width: 600px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            font-size: 1.2em;
-            line-height: 1.6;
-            text-align: left;
-            max-height: 80vh; /* Establecer el límite de altura */
-            overflow-y: auto; /* Permitir el desplazamiento vertical */
+        /* Animación para hacer que el mensaje caiga suavemente */
+        @keyframes slideDown {
+            0% { transform: translateY(-30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
         }
 
         /* Ajustes responsivos */
@@ -148,11 +142,9 @@
 
     <div class="hearts" id="hearts"></div>
 
-    <!-- Carta de mensaje largo -->
-    <div class="carta-overlay" id="carta-overlay">
-        <div class="carta" id="carta">
-            <p>Hoy quiero que pasemos un día especial, y quería aprovechar para recordarte lo mucho que te amo y lo afortunado que soy de tenerte a mi lado. Todo el tiempo que paso con vos es hermoso y de verdad me hace muy feliz. Yo sé que últimamente no estamos teniendo momentos juntos porque, bueno, son cosas que no se dan mucho ya que tenemos responsabilidades, pero para mí cada día es especial con vos porque te tengo y espero estar así toda la vida. Te agradezco por tu paciencia y apoyo, porque sé que no soy el mejor novio y que te mereces más, pero te prometo que lo voy a mejorar cada día. Gracias por ser mi compañera de vida y que este día sea solo una muestra de todo lo que me haces sentir cada día. Te amo con mi alma.</p>
-        </div>
+    <!-- Mensaje largo en la parte superior de la página -->
+    <div class="carta" id="carta">
+        <p>Hoy quiero que pasemos un día especial, y quería aprovechar para recordarte lo mucho que te amo y lo afortunado que soy de tenerte a mi lado. Todo el tiempo que paso con vos es hermoso y de verdad me hace muy feliz. Yo sé que últimamente no estamos teniendo momentos juntos porque, bueno, son cosas que no se dan mucho ya que tenemos responsabilidades, pero para mí cada día es especial con vos porque te tengo y espero estar así toda la vida. Te agradezco por tu paciencia y apoyo, porque sé que no soy el mejor novio y que te mereces más, pero te prometo que lo voy a mejorar cada día. Gracias por ser mi compañera de vida y que este día sea solo una muestra de todo lo que me haces sentir cada día. Te amo con mi alma.</p>
     </div>
 
     <script>
@@ -166,10 +158,10 @@
             respuesta.style.display = 'block';
             respuesta.innerHTML = mensaje;
             
-            // Esperar 3 segundos y mostrar la carta emergente
+            // Esperar 3 segundos y mostrar el mensaje largo arriba
             setTimeout(function() {
-                const cartaOverlay = document.getElementById('carta-overlay');
-                cartaOverlay.style.display = 'flex'; // Mostrar la carta con fondo oscuro
+                const carta = document.getElementById('carta');
+                carta.style.display = 'block'; // Mostrar la carta arriba de todo
             }, 3000);
         }
 
@@ -187,6 +179,3 @@
     </script>
 </body>
 </html>
-
-</html>
-
