@@ -83,6 +83,23 @@
             100% { opacity: 1; }
         }
 
+        /* Estilo de la carta */
+        .carta {
+            display: none;
+            background-color: #fff;
+            color: #6d6875;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.2em;
+            line-height: 1.6;
+            text-align: left;
+        }
+
         /* Ajustes responsivos */
         @media (max-width: 600px) {
             h1 {
@@ -119,6 +136,11 @@
 
     <div class="hearts" id="hearts"></div>
 
+    <!-- Carta de mensaje largo -->
+    <div class="carta" id="carta">
+        <p>Hoy quiero que pasemos un día especial, y quería aprovechar para recordarte lo mucho que te amo y lo afortunado que soy de tenerte a mi lado. Todo el tiempo que paso con vos es hermoso y de verdad me hace muy feliz. Yo sé que últimamente no estamos teniendo momentos juntos porque, bueno, son cosas que no se dan mucho ya que tenemos responsabilidades, pero para mí cada día es especial con vos porque te tengo y espero estar así toda la vida. Te agradezco por tu paciencia y apoyo, porque sé que no soy el mejor novio y que te mereces más, pero te prometo que lo voy a mejorar cada día. Gracias por ser mi compañera de vida y que este día sea solo una muestra de todo lo que me haces sentir cada día. Te amo con mi alma.</p>
+    </div>
+
     <script>
         function mostrarRespuesta(mensaje) {
             // Ocultar los botones
@@ -129,6 +151,12 @@
             const respuesta = document.getElementById('respuesta');
             respuesta.style.display = 'block';
             respuesta.innerHTML = mensaje;
+            
+            // Esperar 3 segundos y mostrar la carta
+            setTimeout(function() {
+                const carta = document.getElementById('carta');
+                carta.style.display = 'block';
+            }, 3000);
         }
 
         // Generar corazones flotantes con mayor intervalo de tiempo
