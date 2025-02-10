@@ -11,8 +11,8 @@
             text-align: center;
             padding: 50px;
             margin: 0;
-            min-height: 100vh; /* Permite que el contenido sea más largo */
-            overflow-y: auto; /* Permite el desplazamiento vertical */
+            min-height: 100vh;
+            overflow-y: auto;
         }
         h1 {
             color: #e63946;
@@ -68,6 +68,21 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
+        /* Respuesta oculta al inicio */
+        .respuesta {
+            display: none;
+            font-size: 1.5em;
+            color: #ff6b6b;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Animación para aparecer */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
         /* Ajustes responsivos */
         @media (max-width: 600px) {
             h1 {
@@ -89,8 +104,10 @@
         <img src="https://imgur.com/nloYFV4.png" alt="Pareja feliz">
     </div>
     <p>De verdad no sabía qué era y a veces por vago no me pongo a informarme. Perdón por ser así, voy a tratar de ser más atento a estas cosas que te gustan. Sos la persona más especial para mí y me encantaría celebrar este día con vos.</p>
-    <button class="btn" onclick="respuesta('¡Sabía que dirías que sí! 😍')">Sí</button>
-    <button class="btn" onclick="respuesta('¡No había otra opción! ❤️')">Obvio que sí</button>
+    <button class="btn" onclick="mostrarRespuesta('¡Sabía que dirías que sí! 😍')">Sí</button>
+    <button class="btn" onclick="mostrarRespuesta('¡No había otra opción! ❤️')">Obvio que sí</button>
+
+    <div class="respuesta" id="respuesta"></div>
 
     <div class="image-container">
         <img src="https://imgur.com/9NXjDwN.png" alt="Ramo de flores">
@@ -103,8 +120,15 @@
     <div class="hearts" id="hearts"></div>
 
     <script>
-        function respuesta(mensaje) {
-            alert(mensaje);
+        function mostrarRespuesta(mensaje) {
+            // Ocultar los botones
+            const botones = document.querySelectorAll('.btn');
+            botones.forEach(btn => btn.style.display = 'none');
+            
+            // Mostrar la respuesta
+            const respuesta = document.getElementById('respuesta');
+            respuesta.style.display = 'block';
+            respuesta.innerHTML = mensaje;
         }
 
         // Generar corazones flotantes con mayor intervalo de tiempo
@@ -117,7 +141,8 @@
             document.getElementById('hearts').appendChild(heart);
 
             setTimeout(() => heart.remove(), 5000);
-        }, 1000);  // Aumenté el intervalo a 1000ms (1 segundo)
+        }, 1000);
     </script>
 </body>
 </html>
+
